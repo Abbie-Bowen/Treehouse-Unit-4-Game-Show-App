@@ -24,4 +24,12 @@ class Phrase {
   // that have a CSS class name that matches the selected letter and replace each
   // selected element's hide CSS class with the show CSS class.
   checkLetter() {}
+
+  showMatchedLetter() {
+    let matchedLetter = document.querySelectorAll(class name === selected letter)
+    for (element in matchedLetter) {
+      replace class name with "show"
+    }
+  }
+
 }
