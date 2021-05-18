@@ -47,7 +47,9 @@ removeLife() {
 }
 
 checkForWin() {
-  
+  if () {
+    return true;
+  }
 }
 checkForWin(): this method checks to see if the player has revealed all of
 the letters in the active phrase.
