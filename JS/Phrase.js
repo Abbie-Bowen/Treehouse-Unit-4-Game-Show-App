@@ -4,18 +4,19 @@
 class Phrase {
   constructor(phrase) {
     this.phrase = phrase.toLowerCase(); //string
+    this.letters = this.phrase.split(""); //array
+    this.remainingPhraseLetters = this.letters.filter((l) => l !== " ");
   }
 
   /* adds letter placeholders when game begins*/
   addPhraseToDisplay() {
     const phraseSection = document.getElementById("phrase");
-    const phraseLetters = this.phrase.split("");
-    console.log(phraseLetters);
+    const phraseLetters = this.letters;
     phraseLetters.forEach((letter) => {
       let phraseElement = document.createElement("li");
       if (letter !== " ") {
+        phraseElement.textContent = "?";
         phraseElement.className = `hide letter ${letter}`;
-        phraseElement.textContent = `${letter}`;
         phraseSection.appendChild(phraseElement);
       } else if (letter === " ") {
         phraseElement.className = "space";
@@ -30,19 +31,23 @@ class Phrase {
    * matches a letter in the phrase.
    * @param {string} - keypress input from user
    * @return {boolean}
-   */
-  checkLetter(selectedLetter) {
-    return this.phrase.includes(selectedLetter);
+  //  */
+  checkLetter(letter) {
+    return this.letters.includes(letter);
   }
 
   /*
    * reveals the correct letters the player has guessed
    * @param {string} - keypress input from user
    */
-  showMatchedLetter(selectedLetter) {
-    let matchedLetter = document.getElementsByClassName(`${selectedLetter}`);
-    for (element in matchedLetter) {
+  showMatchedLetter(letter) {
+    const matchedLetter = document.querySelectorAll(`.${letter}`);
+    for (const element of matchedLetter) {
+      element.textContent = `${letter}`;
       element.className = `show letter ${letter}`;
     }
+    this.remainingPhraseLetters = this.remainingPhraseLetters.filter(
+      (l) => l !== letter
+    );
   }
 }

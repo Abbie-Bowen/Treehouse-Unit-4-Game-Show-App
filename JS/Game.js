@@ -31,36 +31,59 @@ class Game {
     return this.phrases[randomIndex];
   }
 
-  // handleInteraction(e.target.key) {
-  //   disable the e.target.key's keyboard button;
-  //
-  //   if (button clicked === letter in this.activePhrase) {
-  //     add chosen CSS class to the letter's keyboard Button
-  //     this.activePhrase.showMatchedLetter();
-  //     this.checkForWin();
-  //     if (this.checkForWin) {
-  //       this.gameOver();
-  //     }
-  //   } else if (button clicked !== letter in this.activePhrase) {
-  //     add wrong CSS class to letter's keyboard button;
-  //     this.removeLife();
-  //   }
-  //
-  // }
+  /* @param {e} - user button click event
+   * checks letter user guesses against phrase array. If correct guess, displays
+   * letter element, if incorrect guess calls removeLife method. If whole phrase
+   * has been correctly guessed, calls gameOver method.
+   */
+  handleInteraction(e) {
+    e.disabled = true;
 
-  // removeLife() {
-  //   replace liveHeart.png image with lostHeart.png images;
-  //   this.missed +1;
-  //   if (this.missed >= 5) {
-  //     this.gameOver();
-  //   }
-  // }
+    const letter = e.textContent;
 
-  // checkForWin() {
-  //   if () {
-  //     return true;
-  //   }
-  // }
-  // checkForWin(): this method checks to see if the player has revealed all of
-  // the letters in the active phrase.
+    if (this.activePhrase.checkLetter(letter)) {
+      e.className = "chosen key";
+      this.activePhrase.showMatchedLetter(letter);
+      if (this.checkForWin()) {
+        let message = "You guessed the phrase! Great job!";
+        let className = "win";
+        this.gameOver(message, className);
+      }
+    } else if (!this.activePhrase.checkLetter(letter)) {
+      e.className = "wrong key";
+      this.removeLife();
+    }
+  }
+
+  // increments missed guesses counter and removes one heart in visual scoreboard
+  // calls gameOver method if player has guessed incorrectly 5 times.
+  removeLife() {
+    const liveHearts = document.querySelectorAll(".tries"); //nodelist
+    this.missed += 1;
+    if (this.missed < 5) {
+      liveHearts[this.missed - 1].firstElementChild.src =
+        "Images/lostHeart.png";
+    } else if (this.missed >= 5) {
+      let message = "You ran out of hearts. Try again.";
+      let className = "lose";
+      this.gameOver(message, className);
+    }
+  }
+
+  // checks to see if the player has correctly guessed all of the
+  //letters in the active phrase.
+  checkForWin() {
+    const remainingLetters = this.activePhrase.remainingPhraseLetters;
+    return remainingLetters.length === 0 ? true : false;
+  }
+
+  // displays the end of game messages in the matching className.
+  gameOver(message, className) {
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "block";
+
+    const heading = document.getElementById("game-over-message");
+    heading.className = `${className}`;
+    heading.textContent = `${message}`;
+  }
 }
