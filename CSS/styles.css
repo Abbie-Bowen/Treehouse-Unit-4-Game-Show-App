@@ -5,11 +5,11 @@
 
 :root {
   --color-win: #78CF82;
-  --color-lose: #D94545;
+  --color-lose: #FE5F55;
   --color-start: #5b85b7;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
-  --color-keys: #37474F;
+  --color-keys: #222B30;
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
   --font-size-medium: 20px;
@@ -111,7 +111,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #195F6B;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -139,7 +139,7 @@ button {
 
 .wrong {
   background: #f7a964;
-  color: #FFFFFF;
+  color: #222B30;
 }
 
 .btn__reset {
@@ -159,6 +159,10 @@ button {
   border-right: solid 3px rgba(0, 0, 0, 0);
 }
 
+button:focus {
+  background: #FEA09A;
+  color: #222B30
+}
 
 /* Overlay */
 
@@ -189,6 +193,11 @@ button {
 
 .win {
   background-color: var(--color-win);
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  padding: 14px 16px 16px 14px;
 }
 
 .win a {
@@ -197,6 +206,11 @@ button {
 
 .lose {
   background-color: #f5785f;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  padding: 14px 16px 16px 14px;
 }
 
 .lose a {

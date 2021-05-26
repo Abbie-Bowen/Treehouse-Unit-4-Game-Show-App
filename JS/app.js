@@ -16,23 +16,21 @@ document.getElementById("btn__reset").addEventListener("click", function () {
  * and passes @param {e} -- event
  */
 document.getElementById("qwerty").addEventListener("click", (e) => {
-  if (e.target.className === "key") {
+  if (game && e.target.className === "key") {
     game.handleInteraction(e.target);
   }
 });
 
 document.addEventListener("keydown", (e) => {
-  if (game) {
-    const string = e.code;
+  const string = e.code;
+  if (game && string.includes("Key")) {
     const key = string.charAt(string.length - 1).toLowerCase();
     const buttons = document.querySelectorAll(".key");
-    console.log(buttons);
     for (const buttonEl of buttons) {
       if (buttonEl.textContent === key) {
         e = buttonEl;
       }
     }
-    console.log(e);
     game.handleInteraction(e);
   }
 });

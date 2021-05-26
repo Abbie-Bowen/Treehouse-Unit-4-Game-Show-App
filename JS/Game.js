@@ -63,6 +63,7 @@ class Game {
     if (this.missed < 5) {
       liveHearts[this.missed - 1].firstElementChild.src =
         "Images/lostHeart.png";
+      liveHearts[this.missed - 1].firstElementChild.alt = "Missing heart icon";
     } else if (this.missed >= 5) {
       let message = "You ran out of hearts. Try again.";
       let className = "lose";
