@@ -18,9 +18,18 @@ document.getElementById("btn__reset").addEventListener("click", function () {
 document.getElementById("qwerty").addEventListener("click", (e) => {
   if (game && e.target.className === "key") {
     game.handleInteraction(e.target);
+
+    /*code below is a work-around for Firefox blur handling from
+     * Robert Manolis - FSJS Coordinator at Treehouse
+     */
+    if (navigator.userAgent.includes("Firefox")) {
+      document.activeElement.blur();
+      document.querySelector("body").focus();
+    }
   }
 });
 
+// event listener so users can guess letters using the keyboard
 document.addEventListener("keydown", (e) => {
   const string = e.code;
   if (game && string.includes("Key")) {

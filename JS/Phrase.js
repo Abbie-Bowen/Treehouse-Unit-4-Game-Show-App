@@ -3,14 +3,14 @@
  * Phrase.js */
 class Phrase {
   constructor(phrase) {
-    this.phrase = phrase.toLowerCase(); //string
-    this.letters = this.phrase.split(""); //array
+    this.phrase = phrase.toLowerCase();
+    this.letters = this.phrase.split("");
     this.remainingPhraseLetters = this.letters.filter((l) => l !== " ");
   }
 
   /* adds letter placeholders when game begins*/
   addPhraseToDisplay() {
-    const phraseSection = document.getElementById("phrase");
+    const phraseSection = document.querySelector("div > ul");
     const phraseLetters = this.letters;
     phraseLetters.forEach((letter) => {
       let phraseElement = document.createElement("li");
@@ -38,6 +38,8 @@ class Phrase {
 
   /*
    * reveals the correct letters the player has guessed
+   * also updates this.reaminingPhraseLetters with remaining unguessed
+   * letters in the phrase
    * @param {string} - keypress input from user
    */
   showMatchedLetter(letter) {

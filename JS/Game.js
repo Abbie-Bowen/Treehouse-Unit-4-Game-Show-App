@@ -14,6 +14,7 @@ class Game {
     ];
     this.activePhrase = null;
   }
+
   /*
    *hides start game overlay and displays a random phrase from the phrase array,
    */
@@ -58,7 +59,7 @@ class Game {
   // increments missed guesses counter and removes one heart in visual scoreboard
   // calls gameOver method if player has guessed incorrectly 5 times.
   removeLife() {
-    const liveHearts = document.querySelectorAll(".tries"); //nodelist
+    const liveHearts = document.querySelectorAll(".tries");
     this.missed += 1;
     if (this.missed < 5) {
       liveHearts[this.missed - 1].firstElementChild.src =
@@ -78,7 +79,7 @@ class Game {
     return remainingLetters.length === 0 ? true : false;
   }
 
-  // displays the end of game messages in the matching className.
+  // displays the end of game messages styled with the matching className.
   gameOver(message, className) {
     const overlay = document.getElementById("overlay");
     overlay.style.display = "block";
@@ -86,5 +87,30 @@ class Game {
     const heading = document.getElementById("game-over-message");
     heading.className = `${className}`;
     heading.textContent = `${message}`;
+
+    this.resetGameBoard();
+  }
+
+  /* removes the li elements that contain the phrase
+   * resets the heart scoreboard to five hearts
+   * resets this.missed to 0
+   * resets keyboard classnames
+   */
+  resetGameBoard() {
+    const phraseElementsDiv = document.getElementById("phrase");
+    phraseElementsDiv.firstElementChild.innerHTML = "";
+
+    this.missed = 0;
+    const hearts = document.querySelectorAll(".tries");
+    for (let i = 0; i < hearts.length; i++) {
+      hearts[i].firstElementChild.src = "Images/liveHeart.png";
+      hearts[i].firstElementChild.alt = "Heart icon";
+    }
+
+    const keys = document.querySelectorAll(".key");
+    for (let i = 0; i < keys.length; i++) {
+      keys[i].className = "key";
+      keys[i].disabled = false;
+    }
   }
 }
