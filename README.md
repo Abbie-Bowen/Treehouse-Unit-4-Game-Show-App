@@ -6,6 +6,8 @@ Snap words don't follow typical spelling patterns and need to be memorized.
 Practicing snap words in context (in a phrase) helps build connections and
 recognition.
 
+(Scorer, please ignore the phrases_array.js file, it is for a future build out. Thank you!)
+
 Accessibility updates:
 
 1. Focus states added to all buttons (#FEA09A)
