@@ -6,11 +6,11 @@ class Game {
   constructor() {
     this.missed = 0;
     this.phrases = [
-      "You ride the bike",
-      "They like to shop",
-      "I like cake and pie",
-      "Do you have a pet",
-      "His dad is here",
+      new Phrase("You ride the bike"),
+      new Phrase("They like to shop"),
+      new Phrase("I like cake and pie"),
+      new Phrase("Do you have a pet"),
+      new Phrase("His dad is here"),
     ];
     this.activePhrase = null;
   }
@@ -21,7 +21,7 @@ class Game {
   startGame() {
     const overlay = document.getElementById("overlay");
     overlay.style.display = "none";
-    this.activePhrase = new Phrase(this.getRandomPhrase());
+    this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
   }
 
@@ -85,7 +85,7 @@ class Game {
     overlay.style.display = "block";
 
     const heading = document.getElementById("game-over-message");
-    heading.className = `${className}`;
+    overlay.className = `${className}`;
     heading.textContent = `${message}`;
 
     this.resetGameBoard();

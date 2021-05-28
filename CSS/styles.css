@@ -193,7 +193,7 @@ button:focus {
 
 .win {
   background-color: var(--color-win);
-  width: 50%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
@@ -206,7 +206,7 @@ button:focus {
 
 .lose {
   background-color: #f5785f;
-  width: 50%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
