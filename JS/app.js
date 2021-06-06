@@ -36,10 +36,10 @@ document.addEventListener("keydown", (e) => {
     const key = string.charAt(string.length - 1).toLowerCase();
     const buttons = document.querySelectorAll(".key");
     for (const buttonEl of buttons) {
-      if (buttonEl.textContent === key && buttonEl.className !== "chosen") {
+      if (buttonEl.textContent === key && buttonEl.disabled === false) {
         e = buttonEl;
+        game.handleInteraction(e);
       }
     }
-    game.handleInteraction(e);
   }
 });
