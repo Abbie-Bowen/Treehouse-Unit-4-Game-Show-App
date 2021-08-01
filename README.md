@@ -2,13 +2,12 @@
 
 phrase guessing game using snap word phrases
 
-Snap words don't follow typical spelling patterns and need to be memorized.
-Practicing snap words in context (in a phrase) helps build connections and
-recognition.
+Rationale: Snap words (also called sight words) don't follow typical 
+spelling patterns and need to be memorized. Practicing snap words 
+in context (in a phrase) helps build neural connections and 
+word recognition.
 
-(Scorer, please ignore the phrases_array.js file, it is for a future build out. Thank you!)
-
-Accessibility updates:
+Accessibility improvements over initial formatting:
 
 1. Focus states added to all buttons (#FEA09A)
 2. Heart image alt text updates when replaced with a missing heart image.
