@@ -16,3 +16,8 @@ Accessibility improvements over initial formatting:
 Updated Styles
 -Changed background for lose message (#FE5F55)
 -Updated background for win/lose message to fit around message with padding.
+
+Future additions
+-Increase quantity of phrases
+-Start menu to choose to filter full array of phrases by snap word levels
+-Player scoring
